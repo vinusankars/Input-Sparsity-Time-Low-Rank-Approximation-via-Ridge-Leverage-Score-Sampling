@@ -42,19 +42,20 @@ plt.savefig("plot_for_k.png")
 
 P = []
 for c in range(500, 5001, 500):
-	k = c//4
+	k = c//8
 	p = 0
-	for i in range(10):
+	for i in range(5):
 		print("c = {}, i = {}".format(c, i), flush=True, end="\r")
 		A = np.matrix(np.random.rand(c//2, c))
 		A_w = Approx(A, k).getApprox()
 		p += Perf(A, A_w, k)
 	p /= 5
+	print(p)
 	P.append(p)
 
 plt.figure(figsize=(10, 5))
-plt.plot(range(500, 10000, 500), P, '--o')
+plt.plot(range(500, 5001, 500), P, '--o')
 plt.xlabel("# Columns")
 plt.ylabel(r"$(1+\epsilon)$")
-plt.title(r"Mean $(1+\epsilon)$ values for (C/2)xC matrix (10 trials)")
+plt.title(r"Mean $(1+\epsilon)$ values for (C/4)xC matrix with k = C/8 (5 trials)")
 plt.savefig("plot_for_C.png")
