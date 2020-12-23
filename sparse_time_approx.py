@@ -49,8 +49,8 @@ class Approx():
 		for i in range(len(A)):
 			tau.append(float(np.matmul(self.A[:, A[i]].T, np.matmul(M, self.A[:, A[i]]))))
 			# p.append(np.min(1, tau[-1]*self.c1*np.log10(self.k/self.delta)))
-		p = np.array(tau) + 1/len(tau)
-		p = p/p.sum()
+		p = np.array(tau)
+		p = p/p.sum()*0.99 + 1/len(p)*0.01
 
 		i_A_tilde = np.random.choice(len(A), size=len(A_half), replace=False, p=p)
 		A_tilde = A[i_A_tilde] # samplesm A_tilde from A based on ridge leverage score on A_half
