@@ -48,7 +48,7 @@ class Approx():
 
 		# compute the ridge leverage scores and probabilities for sampling
 		for i in range(len(A)):
-			tau.append(int(np.matmul(self.A[:, A[i]].T, np.matmul(M, self.A[:, A[i]]))))
+			tau.append(float(np.matmul(self.A[:, A[i]].T, np.matmul(M, self.A[:, A[i]]))))
 			# p.append(np.min(1, tau[-1]*self.c1*np.log10(self.k/self.delta)))
 		p = np.array(tau)
 		p = p/p.sum()
