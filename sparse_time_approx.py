@@ -1,5 +1,4 @@
 import numpy as np 
-import time
 
 class Approx():
 
@@ -83,9 +82,9 @@ class Approx():
 		self.w_tilde = w_tilde
 		return np.matmul(self.A[:, A_tilde], np.diag(w_tilde))
 
-start = time.time()
-A = np.matrix(np.random.rand(512, 50000))
-k = 1000
-Appr = Approx(A, k)
-weighted_A_tilde = Appr.getApprox()
-print(weighted_A_tilde.shape, time.time()-start)
+# start = time.time()
+# A = np.matrix(np.random.rand(512, 50000))
+# k = 1000
+# Appr = Approx(A, k)
+# weighted_A_tilde = Appr.getApprox()
+# print(weighted_A_tilde.shape, time.time()-start)
